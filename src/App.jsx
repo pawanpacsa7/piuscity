@@ -4,10 +4,6 @@ const NAME = "Adediji Pius Olatunde";
 const TITLE = "Certified AI Data Evaluator";
 const WHATSAPP = "2347083426038"; // international format, no +, no spaces
 
-// Drop a photo named "profile.jpg" into the public/ folder and it will appear.
-// To use a different filename, change the path below.
-const PHOTO = "/profile.jpg";
-
 const companies = [
   "Appen",
   "Telus International",
@@ -102,9 +98,6 @@ const experience = [
   },
 ];
 
-// Initials fallback shown until a real photo is added
-const INITIALS = "PA";
-
 export default function App() {
   const waLink = `https://wa.me/${WHATSAPP}`;
 
@@ -122,16 +115,8 @@ export default function App() {
       </header>
 
       <section className="hero">
-        <div className="avatar">
-          <img
-            src={PHOTO}
-            alt={NAME}
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-              e.currentTarget.nextSibling.style.display = "flex";
-            }}
-          />
-          <span className="avatar-fallback">{INITIALS}</span>
+        <div className="hero-logo">
+          <img src="/logo-banner.png" alt="Pius City — Freelance Hub" />
         </div>
         <p className="eyebrow">{TITLE}</p>
         <h1>Evaluating AI for accuracy, relevance, and user intent</h1>

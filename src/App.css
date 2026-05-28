@@ -70,40 +70,22 @@ body {
   padding: 2.5rem 0 3rem;
 }
 .hero > * { animation: rise 0.7s ease both; }
-.avatar { animation-delay: 0s; }
+.hero-logo { animation-delay: 0s; }
 .hero .eyebrow { animation-delay: 0.08s; }
 .hero h1 { animation-delay: 0.16s; }
 .hero .sub { animation-delay: 0.24s; }
 .hero .cta-row { animation-delay: 0.32s; }
 
-.avatar {
-  position: relative;
-  width: 116px;
-  height: 116px;
-  margin: 0 auto 1.5rem;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  box-shadow: 0 0 0 6px var(--surface), var(--shadow);
-  overflow: hidden;
+.hero-logo {
+  margin: 0 auto 1.75rem;
+  max-width: 420px;
 }
-.avatar img {
+.hero-logo img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-}
-.avatar-fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  font-family: var(--display);
-  font-size: 2.4rem;
-  font-weight: 500;
-  color: var(--accent);
-  position: absolute;
-  inset: 0;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
 }
 
 .eyebrow {
