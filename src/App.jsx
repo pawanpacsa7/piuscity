@@ -12,14 +12,51 @@ const companies = [
   "DataForce",
 ];
 
-const skills = [
-  "AI Evaluation",
-  "Search Relevance Rating",
-  "Data Annotation",
-  "E-E-A-T",
-  "Quality Assurance",
-  "Web Research",
-  "Account Management",
+const heroPoints = [
+  "5+ Years Experience",
+  "High Accuracy & Quality",
+  "Global Platforms",
+  "Standardized Workflows",
+];
+
+const services = [
+  {
+    icon: "annotation",
+    title: "Data Annotation",
+    body: "Labeling and structuring training data — text, audio, and search — to high consistency standards.",
+  },
+  {
+    icon: "search",
+    title: "Search Relevance Rating",
+    body: "Assessing query intent and result relevance using E-E-A-T principles to improve search quality.",
+  },
+  {
+    icon: "audio",
+    title: "Audio Annotation",
+    body: "Transcribing and evaluating speech clarity, with rigorous attention to annotation guidelines.",
+  },
+  {
+    icon: "compare",
+    title: "AI Response Evaluation",
+    body: "Head-to-head comparison of model outputs to surface the most accurate, helpful response.",
+  },
+  {
+    icon: "shield",
+    title: "Quality Assurance",
+    body: "Multi-level QA reviews and compliance checks to ensure accuracy across large workloads.",
+  },
+  {
+    icon: "research",
+    title: "Web Research",
+    body: "Verifying facts and claims through structured web research to support reliable evaluations.",
+  },
+];
+
+const stats = [
+  { num: "5+", label: "Years in AI\nData Evaluation" },
+  { num: "8", label: "US Accounts\nManaged" },
+  { num: "5", label: "Global Platforms\nWorked Across" },
+  { num: "100%", label: "Quality\nCompliance Focus" },
 ];
 
 const experience = [
@@ -98,38 +135,75 @@ const experience = [
   },
 ];
 
+function Icon({ name }) {
+  const common = {
+    width: 26,
+    height: 26,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  };
+  const paths = {
+    annotation: <><path d="M4 4h16v12H7l-3 3V4z" /><path d="M8 9h8M8 12h5" /></>,
+    search: <><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></>,
+    audio: <><path d="M3 12h2M7 8v8M11 5v14M15 8v8M19 11v2M21 12h0" /></>,
+    compare: <><path d="M12 3v18M5 8l-3 4 3 4M19 8l3 4-3 4" /></>,
+    shield: <><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" /><path d="m9 12 2 2 4-4" /></>,
+    research: <><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3M11 8v6M8 11h6" /></>,
+  };
+  return <svg {...common} aria-hidden="true">{paths[name]}</svg>;
+}
+
 export default function App() {
   const waLink = `https://wa.me/${WHATSAPP}`;
 
   return (
-    <div className="page">
+    <div className="page-wrap">
       <header className="nav">
-        <a href="#" className="brand">
-          <img src="/logo.png" alt="Pius City" className="brand-logo" />
-        </a>
-        <nav className="nav-links">
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className="nav-inner">
+          <a href="#" className="brand">
+            <img src="/logo.png" alt="Pius City" className="brand-logo" />
+          </a>
+          <nav className="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact" className="nav-cta">Contact</a>
+          </nav>
+        </div>
       </header>
 
       <section className="hero">
-        <div className="hero-logo">
-          <img src="/logo-banner.png" alt="Pius City — Freelance Hub" />
-        </div>
-        <p className="eyebrow">{TITLE}</p>
-        <h1>Evaluating AI for accuracy, relevance, and user intent</h1>
-        <p className="sub">
-          Over 5 years assessing AI-generated outputs across leading global
-          platforms. Specializing in search relevance rating, training data
-          annotation, and quality assurance.
-        </p>
-        <div className="cta-row">
-          <a href={waLink} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Get in touch
-          </a>
-          <a href="#experience" className="btn btn-ghost">View experience</a>
+        <div className="hero-inner">
+          <div className="hero-logo">
+            <img src="/logo-banner.png" alt="Pius City — Freelance Hub" />
+          </div>
+          <p className="hero-eyebrow">AI DATA · HUMAN INTELLIGENCE · REAL IMPACT</p>
+          <h1>
+            High-Quality AI Data Evaluation You Can <span className="accent-word">Trust</span>
+          </h1>
+          <p className="hero-sub">
+            {TITLE} with over 5 years assessing AI-generated outputs for accuracy,
+            relevance, and user intent — across Appen, Telus International, OneForma,
+            RWS, and DataForce.
+          </p>
+          <div className="cta-row">
+            <a href={waLink} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Get in touch →
+            </a>
+            <a href="#experience" className="btn btn-outline">View experience</a>
+          </div>
+          <div className="hero-points">
+            {heroPoints.map((p) => (
+              <div className="hero-point" key={p}>
+                <span className="dot" />
+                {p}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -142,17 +216,72 @@ export default function App() {
         </div>
       </section>
 
+      <section id="services" className="services">
+        <p className="kicker">WHAT I DO</p>
+        <h2>AI Data Services That Drive Intelligent Results</h2>
+        <p className="section-intro">
+          From data annotation to search evaluation, I provide end-to-end
+          human-in-the-loop services that help AI models learn better and perform smarter.
+        </p>
+        <div className="service-grid">
+          {services.map((s) => (
+            <div className="service-card" key={s.title}>
+              <div className="service-icon"><Icon name={s.icon} /></div>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="stats">
+        <div className="stats-inner">
+          {stats.map((s) => (
+            <div className="stat" key={s.num}>
+              <span className="stat-num">{s.num}</span>
+              <span className="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="about">
+        <p className="kicker">ABOUT</p>
+        <h2>A Reliable AI Evaluation Partner You Can Count On</h2>
+        <p className="about-text">
+          I'm a certified AI Data Evaluator dedicated to delivering reliable, high-quality
+          evaluation and annotation work. With experience across leading global platforms,
+          I bring rigorous attention to accuracy, strong quality control, and a deep
+          understanding of search relevance and user intent.
+        </p>
+        <ul className="about-list">
+          <li>Experienced across multiple global evaluation platforms</li>
+          <li>Strong quality control and standardized workflows</li>
+          <li>Flexible across annotation, search rating, audio, and QA</li>
+        </ul>
+      </section>
+
       <section id="skills" className="skills-section">
-        <h2>Core skills</h2>
+        <p className="kicker">CORE SKILLS</p>
+        <h2>Specialized Expertise</h2>
         <div className="skill-tags">
-          {skills.map((s) => (
+          {[
+            "AI Evaluation",
+            "Search Relevance Rating",
+            "Data Annotation",
+            "E-E-A-T",
+            "Quality Assurance",
+            "Web Research",
+            "Account Management",
+          ].map((s) => (
             <span className="tag" key={s}>{s}</span>
           ))}
         </div>
       </section>
 
       <section id="experience" className="experience">
-        <h2>Professional experience</h2>
+        <p className="kicker">EXPERIENCE</p>
+        <h2>Professional Experience</h2>
         <div className="timeline">
           {experience.map((job) => (
             <div className="job" key={job.role}>
@@ -174,7 +303,7 @@ export default function App() {
       </section>
 
       <section id="contact" className="contact">
-        <h2>Let's work together</h2>
+        <h2>Let's Build the Future of AI Together</h2>
         <p className="contact-text">
           Message me directly on WhatsApp — tap below to start a chat.
         </p>
@@ -199,7 +328,7 @@ export default function App() {
       </section>
 
       <footer className="footer">
-        <span>© {new Date().getFullYear()} {NAME}</span>
+        <span>© {new Date().getFullYear()} {NAME} · Pius City Freelance Hub</span>
       </footer>
     </div>
   );
