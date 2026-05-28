@@ -1,10 +1,20 @@
-import { useState } from "react";
 import "./App.css";
 
 const NAME = "Adediji Pius Olatunde";
 const TITLE = "Certified AI Data Evaluator";
-const EMAIL = "piusadediji@gmail.com";
-const PHONE = "+234 708 342 6038";
+const WHATSAPP = "2347083426038"; // international format, no +, no spaces
+
+// Drop a photo named "profile.jpg" into the public/ folder and it will appear.
+// To use a different filename, change the path below.
+const PHOTO = "/profile.jpg";
+
+const companies = [
+  "Appen",
+  "Telus International",
+  "OneForma",
+  "RWS",
+  "DataForce",
+];
 
 const skills = [
   "AI Evaluation",
@@ -92,25 +102,11 @@ const experience = [
   },
 ];
 
+// Initials fallback shown until a real photo is added
+const INITIALS = "PA";
+
 export default function App() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
-
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async () => {
-    if (!form.name || !form.email || !form.message) return;
-    // TODO: connect to a form service (Formspree, Web3Forms) or a Cloudflare Function.
-    // Example with Formspree:
-    // await fetch("https://formspree.io/f/YOUR_ID", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(form),
-    // });
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
-  };
+  const waLink = `https://wa.me/${WHATSAPP}`;
 
   return (
     <div className="page">
@@ -124,17 +120,38 @@ export default function App() {
       </header>
 
       <section className="hero">
+        <div className="avatar">
+          <img
+            src={PHOTO}
+            alt={NAME}
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+              e.currentTarget.nextSibling.style.display = "flex";
+            }}
+          />
+          <span className="avatar-fallback">{INITIALS}</span>
+        </div>
         <p className="eyebrow">{TITLE}</p>
         <h1>Evaluating AI for accuracy, relevance, and user intent</h1>
         <p className="sub">
           Over 5 years assessing AI-generated outputs across leading global
-          platforms — Appen, Telus International, OneForma, RWS, and DataForce.
-          Specializing in search relevance rating, training data annotation, and
-          quality assurance.
+          platforms. Specializing in search relevance rating, training data
+          annotation, and quality assurance.
         </p>
         <div className="cta-row">
-          <a href="#contact" className="btn btn-primary">Get in touch</a>
+          <a href={waLink} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            Get in touch
+          </a>
           <a href="#experience" className="btn btn-ghost">View experience</a>
+        </div>
+      </section>
+
+      <section className="logos">
+        <p className="logos-label">Trusted across global evaluation platforms</p>
+        <div className="logo-row">
+          {companies.map((c) => (
+            <span className="company-badge" key={c}>{c}</span>
+          ))}
         </div>
       </section>
 
@@ -170,41 +187,28 @@ export default function App() {
       </section>
 
       <section id="contact" className="contact">
-        <h2>Get in touch</h2>
-        <div className="contact-info">
-          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          <span>{PHONE}</span>
-        </div>
-        {sent ? (
-          <p className="success">
-            Thanks — your message was sent. Replace this with real form handling.
-          </p>
-        ) : (
-          <div className="form">
-            <input
-              name="name"
-              placeholder="Your name"
-              value={form.name}
-              onChange={handleChange}
-            />
-            <input
-              name="email"
-              placeholder="Your email"
-              value={form.email}
-              onChange={handleChange}
-            />
-            <textarea
-              name="message"
-              placeholder="Your message"
-              rows={4}
-              value={form.message}
-              onChange={handleChange}
-            />
-            <button className="btn btn-primary" onClick={handleSubmit}>
-              Send message
-            </button>
-          </div>
-        )}
+        <h2>Let's work together</h2>
+        <p className="contact-text">
+          Message me directly on WhatsApp — tap below to start a chat.
+        </p>
+        <a
+          href={waLink}
+          className="whatsapp-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+        >
+          <svg
+            className="whatsapp-icon"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M16.003 0h-.006C7.165 0 0 7.167 0 16c0 3.504 1.13 6.75 3.05 9.385L1.05 31.36l6.18-1.975A15.92 15.92 0 0 0 16.003 32C24.84 32 32 24.832 32 16S24.84 0 16.003 0z" fill="#25D366"/>
+            <path d="M25.317 22.587c-.387 1.092-1.922 1.998-3.146 2.262-.838.178-1.93.32-5.61-1.205-4.706-1.95-7.737-6.733-7.973-7.043-.226-.31-1.902-2.533-1.902-4.832 0-2.299 1.176-3.428 1.65-3.895.39-.385.855-.56 1.348-.56.16 0 .305.008.435.014.39.017.586.04.844.656.32.77 1.1 2.667 1.193 2.86.094.193.188.45.06.706-.12.262-.226.394-.42.626-.193.232-.376.41-.57.66-.176.218-.376.453-.156.83.22.37.978 1.612 2.1 2.612 1.448 1.29 2.65 1.69 3.067 1.866.31.13.682.1.91-.146.29-.314.642-.84 1-.36.252.337.566.382.79.298.226-.083 1.43-.674 1.676-.795.246-.122.41-.18.567.123.156.302.156 1.747-.23 2.84z" fill="#fff"/>
+          </svg>
+          <span>Chat on WhatsApp</span>
+        </a>
       </section>
 
       <footer className="footer">
