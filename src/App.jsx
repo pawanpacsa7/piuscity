@@ -111,7 +111,9 @@ export default function App() {
   return (
     <div className="page">
       <header className="nav">
-        <span className="brand">{NAME}</span>
+        <a href="#" className="brand">
+          <img src="/logo.png" alt="Pius City" className="brand-logo" />
+        </a>
         <nav className="nav-links">
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>

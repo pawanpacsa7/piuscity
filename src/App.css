@@ -6,9 +6,10 @@
   --border: #ece8e1;
   --text: #1a1816;
   --muted: #6b6660;
-  --accent: #0f5c4c;
-  --accent-soft: #e6f0ed;
+  --accent: #0d1f5c;
+  --accent-soft: #e7eaf4;
   --accent-text: #ffffff;
+  --pop: #f47b20;
   --radius: 16px;
   --shadow: 0 1px 2px rgba(26,24,22,0.04), 0 8px 24px rgba(26,24,22,0.05);
   --display: 'Fraunces', Georgia, serif;
@@ -47,10 +48,13 @@ body {
   gap: 0.5rem;
 }
 .brand {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+}
+.brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 .nav-links a {
   color: var(--muted);
@@ -119,6 +123,7 @@ body {
   margin: 0 0 1.1rem;
   max-width: 16ch;
   margin-inline: auto;
+  color: var(--accent);
 }
 .sub {
   color: var(--muted);
